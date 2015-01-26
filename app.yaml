@@ -1,0 +1,16 @@
+application: finance-andre-venancio-limited
+version: 1
+runtime: python27
+api_version: 0.0.0
+threadsafe: true
+
+handlers:
+- url: /.*
+  script: main.app
+  secure: optional
+
+libraries:
+- name: webapp2
+  version: "latest"
+- name: jinja2
+  version: "latest"

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Finance</title>
+    </head>
+    <body>
+        {% if profile %}
+            <p><a href="{{ profile.profile_url }}"><img src="http://graph.facebook.com/{{ profile.id }}/picture"/></a></p>
+            <p>Hello {{ profile.name|escape }}</p>
+            <p><a href="/auth/logout">Log out</a></p>
+        {% else %}
+            <a href="/auth/login">Log in with Facebook</a>
+        {% endif %}
+        <script type="text/javascript" src="//connect.facebook.net/en_US/all.js"></script>
+    </body>
+</html>
