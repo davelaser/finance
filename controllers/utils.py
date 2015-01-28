@@ -19,8 +19,18 @@ jinja_environment = jinja2.Environment(
 
 
 class BaseHandler(webapp2.RequestHandler):
+    """
+        If you're sub-classing webapp2.RequestHandler you need to implement this __ini__() method, below.
+    """
+    def __init__(self, request=None, response=None):
+        # Initialize the Request and Response objects
+        self.initialize(request, response)
+        
+        # And create your hash context for use with Request arguments or data for the Jinja template
+        self.context = {}
 
-    context = {}
+        # Now do your own stuff, like set request arguments into a handy dictionary (hash)
+        self.set_request_arguments()
 
     def dispatch(self):
         # Get a session store for this request.
