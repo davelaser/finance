@@ -9,6 +9,6 @@ app = webapp2.WSGIApplication([
     (urls.requestDefault, default.DefaultHandler),
     (urls.requestLogin, default.RequestLogin),
     (urls.requestAll, default.RequestAll)
-    ],
+],
     config=properties.GAE_SESSION_CONFIG,
     debug=True)

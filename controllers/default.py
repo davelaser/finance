@@ -1,14 +1,15 @@
 import logging
 import time
 
-# Import local scripts
 from controllers import urls
 from controllers import utils
+
 
 class RequestAll(utils.BaseHandler):
 
     def get(self, path):
         self.redirect(urls.requestDefault)
+
 
 class DefaultHandler(utils.BaseHandler):
 
@@ -18,7 +19,7 @@ class DefaultHandler(utils.BaseHandler):
 
         try:
             args = dict(view_count=True, limit=None)
-            self.context['now_time'] = int( time.time() )
+            self.context['now_time'] = int(time.time())
             template = 'index'
         except Exception, e:
             logging.exception(e)
@@ -29,14 +30,14 @@ class DefaultHandler(utils.BaseHandler):
     def post(self):
         self.redirect(urls.requestDefault)
 
+
 class RequestLogin(utils.BaseHandler):
 
     def get(self):
         self.FacebookLogin()
 
+
 class RequestLogout(utils.BaseHandler):
-    
+
     def get(self):
         self.FacebookLogout()
-
-
