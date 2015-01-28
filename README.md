@@ -43,7 +43,7 @@ Personal Finance application for Andre Venancio Limited
 
     It is also possible for your client application to revoke access for the current authenticated User, using JavaScript. It requires that you have the User's access token available in the client:
 
-        AngularJS example
+        //AngularJS example
 
         $http({
             method:"DELETE",

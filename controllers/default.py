@@ -15,6 +15,8 @@ class DefaultHandler(utils.BaseHandler):
 
     def get(self):
 
+        # You can remove this set_request_arguments() method call now, as the BaseHandler.__init__() 
+        # calls this for you on every request...
         self.set_request_arguments()
 
         try:
