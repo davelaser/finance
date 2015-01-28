@@ -14,14 +14,14 @@ Personal Finance application for Andre Venancio Limited
 
 1. Facebook App Config
 
-Facebook allows you to provide a Deauthorization URL for your application. You can enter this for your Facebook App here:
+    Facebook allows you to provide a Deauthorization URL for your application. You can enter this for your Facebook App here:
 
     https://developers.facebook.com/apps/YOUR_APP_ID/settings/advanced/ -> Deauthorize Callback URL
 
-This is fired when a User revokes access to your App from their Facebook settings. Importantly it will only ever be an HTTP(S) POST Request, so ensure your Webapp2 RequestHandler has a POST method to receive the data.
+    This is fired when a User revokes access to your App from their Facebook settings. Importantly it will only ever be an HTTP(S) POST Request, so ensure your Webapp2 RequestHandler has a POST method to receive the data.
 
 
-Your Request Handler will look the same as your other ones you have created, e.g.
+    Your Request Handler will look the same as your other ones you have created in default.py, e.g.
 
     class MyFacebookDeauthorizeCallback(utils.BaseHandler):
         # Only HTTP(S) POST will be issued by Facebook, so use a post() method in the Class
@@ -33,15 +33,15 @@ Your Request Handler will look the same as your other ones you have created, e.g
                 logging.info(str(key) + ': ' + str(value))
 
 
-You already have a URL prepared -> urls.serviceFacebookDeauthorizationCallback.
+    You already have a URL prepared -> urls.serviceFacebookDeauthorizationCallback.
 
-So add your URL and Handler name as a mapping in your main.py module, the same as the other mappings.
+    So add your URL and Handler name as a mapping in your main.py module, the same as the other mappings.
 
 2. Client Revoke Access
 
-It is also possible for your client application to revoke access for the current authenticated User, using JavaScript. It requires that you have the User's access token available in the client:
+    It is also possible for your client application to revoke access for the current authenticated User, using JavaScript. It requires that you have the User's access token available in the client:
 
-    *AngularJS example*
+    AngularJS example
 
     $http({
         method:"DELETE",
@@ -55,7 +55,7 @@ It is also possible for your client application to revoke access for the current
         $log.info(response);
     });
 
-You wuld implement this perhaps as a "delete my account" feature.
+    You would implement this perhaps as a "delete my account" feature.
 
 #### Facebook Logout
 
