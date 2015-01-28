@@ -16,21 +16,21 @@ Personal Finance application for Andre Venancio Limited
 
     Facebook allows you to provide a Deauthorization URL for your application. You can enter this for your Facebook App here:
 
-    https://developers.facebook.com/apps/YOUR_APP_ID/settings/advanced/ -> Deauthorize Callback URL
+        https://developers.facebook.com/apps/YOUR_APP_ID/settings/advanced/ -> Deauthorize Callback URL
 
     This is fired when a User revokes access to your App from their Facebook settings. Importantly it will only ever be an HTTP(S) POST Request, so ensure your Webapp2 RequestHandler has a POST method to receive the data.
 
 
     Your Request Handler will look the same as your other ones you have created in default.py, e.g.
 
-    class MyFacebookDeauthorizeCallback(utils.BaseHandler):
-        # Only HTTP(S) POST will be issued by Facebook, so use a post() method in the Class
-        def post(self):
+        class MyFacebookDeauthorizeCallback(utils.BaseHandler):
+            # Only HTTP(S) POST will be issued by Facebook, so use a post() method in the Class
+            def post(self):
 
-            # Well, let's take a look at what Facebook has sent us, shall we?
+                # Well, let's take a look at what Facebook has sent us, shall we?
 
-            for key, value in self.context['request_args'].items():
-                logging.info(str(key) + ': ' + str(value))
+                for key, value in self.context['request_args'].items():
+                    logging.info(str(key) + ': ' + str(value))
 
 
     You already have a URL prepared -> urls.serviceFacebookDeauthorizationCallback.
@@ -41,19 +41,19 @@ Personal Finance application for Andre Venancio Limited
 
     It is also possible for your client application to revoke access for the current authenticated User, using JavaScript. It requires that you have the User's access token available in the client:
 
-    AngularJS example
+        AngularJS example
 
-    $http({
-        method:"DELETE",
-        url:'https://graph.facebook.com/v2.2/me/permissions',
-        data:{
-            accessToken:USER_ACCESS_TOKEN
-        }
-    })
-    .then(function(response) {
-        $log.info('Did Facebook revoke access worked??? Inspect the response below');
-        $log.info(response);
-    });
+        $http({
+            method:"DELETE",
+            url:'https://graph.facebook.com/v2.2/me/permissions',
+            data:{
+                accessToken:USER_ACCESS_TOKEN
+            }
+        })
+        .then(function(response) {
+            $log.info('Did Facebook revoke access worked??? Inspect the response below');
+            $log.info(response);
+        });
 
     You would implement this perhaps as a "delete my account" feature.
 
