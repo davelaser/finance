@@ -33,6 +33,8 @@ Personal Finance application for Andre Venancio Limited
                     logging.info(str(key) + ': ' + str(value))
 
 
+    You should expect to receive something useful from Facebook; the unique User ID for the User who has left your App, so that you can go ahead and delete them, or do whatever you need to do. Perhaps you will also receive some other data, so try this out and see what is returned.
+
     You already have a URL prepared -> urls.serviceFacebookDeauthorizationCallback.
 
     So add your URL and Handler name as a mapping in your main.py module, the same as the other mappings.
