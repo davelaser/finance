@@ -9,8 +9,38 @@ Personal Finance application for Andre Venancio Limited
 ## TODO
 
 ### Facebook
-* Facebook Deauthorization url 
-* Facebook Logout
+
+#### Facebook Deauthorization url 
+
+1. Facebook App Config
+
+Facebook allows you to provide a Deauthorization URL for your application. You can enter this for your Facebook App here:
+
+    https://developers.facebook.com/apps/YOUR_APP_ID/settings/advanced/ -> Deauthorize Callback URL
+
+This is fired when a User revokes access to your App from their Facebook settings. Importantly it will only ever be an HTTP(S) POST Request, so ensure your Webapp2 RequestHandler has a POST method to receive the data.
+
+2. Client Revoke Access
+
+It is also possible for your client application to revoke access for the current authenticated User, using JavaScript. It requires that you have the User's access token available in the client:
+
+    *AngularJS example*
+
+    $http({
+        method:"DELETE",
+        url:'https://graph.facebook.com/v2.2/me/permissions',
+        data:{
+            accessToken:USER_ACCESS_TOKEN
+        }
+    })
+    .then(function(response) {
+        $log.info('Did Facebook revoke access worked??? Inspect the response below');
+        $log.info(response);
+    });
+
+You wuld implement this perhaps as a "delete my account" feature.
+
+#### Facebook Logout
 
 
 ### GAE
